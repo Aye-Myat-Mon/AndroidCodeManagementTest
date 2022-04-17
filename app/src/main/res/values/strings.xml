@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidCodeManagementTest</string>
+    <string name="str_upcoming">Upcoming movies</string>
+    <string name="str_popular">Popular movies</string>
+    <string name="str_description">Movie Description</string>
+    <string name="str_empty_movie">No movie list to show</string>
+</resources>
