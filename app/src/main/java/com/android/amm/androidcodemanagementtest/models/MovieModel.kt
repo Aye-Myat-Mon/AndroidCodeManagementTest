@@ -13,6 +13,5 @@ data class MovieModel(
     val release_date: String,
     val vote_average: String,
     var isFavourite: Boolean = false,
-    var isPopular: Boolean = false,
-    var isUpcoming: Boolean = false
+    var isPopular: Boolean = false
 )

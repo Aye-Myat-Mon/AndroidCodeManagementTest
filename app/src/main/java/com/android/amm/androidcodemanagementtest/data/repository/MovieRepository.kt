@@ -67,7 +67,6 @@ class MovieRepository @Inject constructor(
             when (val response = safeApiCall { movieApi.getUpcomingMovies(Constants.API_KEY) }) {
                 is Result.Success -> {
                     for (movie in response.data.results) {
-                        //movieDao.updateExistingMovie(isPopular = true, isUpcoming = true, movie.id.toString())
                         movieList.add(
                             MovieModel(
                                 movie.id.toString(),

@@ -18,9 +18,6 @@ interface MovieDao {
     @Query("UPDATE MovieModel SET isFavourite=:isFavourite WHERE id = :id")
     fun updateMovie(isFavourite: Boolean, id: String)
 
-    @Query("UPDATE MovieModel SET  isPopular=:isPopular AND isUpcoming=:isUpcoming WHERE id = :id")
-    fun updateExistingMovie(isPopular: Boolean, isUpcoming: Boolean, id: String)
-
     @Query("DELETE FROM MovieModel WHERE isPopular = :isPopular")
     fun deleteMovies(isPopular: Boolean)
 }
