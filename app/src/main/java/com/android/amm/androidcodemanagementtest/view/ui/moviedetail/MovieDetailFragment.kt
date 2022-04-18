@@ -4,26 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import androidx.lifecycle.ViewModelProvider
 import com.android.amm.androidcodemanagementtest.R
 import com.android.amm.androidcodemanagementtest.constant.Constants
 import com.android.amm.androidcodemanagementtest.models.MovieModel
 import com.android.amm.androidcodemanagementtest.view.ui.MainActivity
-import com.android.amm.androidcodemanagementtest.view.ui.movielist.MovieListViewModel
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
-import kotlinx.android.synthetic.main.fragment_movie_detail.iv_movie_path
-import kotlinx.android.synthetic.main.fragment_movie_detail.tv_percent
-import kotlinx.android.synthetic.main.fragment_movie_detail.tv_title
 import javax.inject.Inject
 
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
 class MovieDetailFragment: DaggerFragment() {
 
     @Inject

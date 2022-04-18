@@ -8,9 +8,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 @Module
 abstract class MovieListModule {
     @FragmentScoped

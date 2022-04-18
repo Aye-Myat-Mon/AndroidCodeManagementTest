@@ -7,9 +7,7 @@ import com.android.amm.androidcodemanagementtest.models.MovieModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 class MovieDetailViewModel @Inject constructor(private val movieRepository: MovieRepository): ViewModel() {
 
     fun updateMovie(movieModel: MovieModel) {

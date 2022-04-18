@@ -3,7 +3,6 @@ package com.android.amm.androidcodemanagementtest.data.repository
 import com.android.amm.androidcodemanagementtest.constant.Constants
 import com.android.amm.androidcodemanagementtest.data.api.MovieApi
 import com.android.amm.androidcodemanagementtest.data.db.MovieDao
-import com.android.amm.androidcodemanagementtest.models.MovieListResponse
 import com.android.amm.androidcodemanagementtest.models.MovieModel
 import com.android.amm.androidcodemanagementtest.utils.Result
 import com.android.amm.androidcodemanagementtest.utils.safeApiCall
@@ -12,12 +11,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 class MovieRepository @Inject constructor(
     private val movieApi: MovieApi,
     private val movieDao: MovieDao
@@ -32,6 +28,7 @@ class MovieRepository @Inject constructor(
 
             when (val response = safeApiCall { movieApi.getPopularMovies(Constants.API_KEY) }) {
                 is Result.Success -> {
+                    //changed id data type to String because database automatically sorted
                     for (movie in response.data.results) {
                         movieList.add(
                             MovieModel(
@@ -70,6 +67,7 @@ class MovieRepository @Inject constructor(
             when (val response = safeApiCall { movieApi.getUpcomingMovies(Constants.API_KEY) }) {
                 is Result.Success -> {
                     for (movie in response.data.results) {
+                        //movieDao.updateExistingMovie(isPopular = true, isUpcoming = true, movie.id.toString())
                         movieList.add(
                             MovieModel(
                                 movie.id.toString(),
@@ -85,7 +83,6 @@ class MovieRepository @Inject constructor(
                         )
                     }
                     movieDao.insertMovies(movieList)
-                    (Timber.d("amm: movie list ${movieDao.getMovies(isPopular = false)}"))
                     emit(Result.Success(movieDao.getMovies(isPopular = false)))
                 }
                 is Result.Error -> {
@@ -100,7 +97,6 @@ class MovieRepository @Inject constructor(
 
     suspend fun updateMovieData(movieModel: MovieModel) {
         return withContext(Dispatchers.IO) {
-            Timber.d("amm: is favourite ${movieModel.title} ${movieModel.id}")
             movieDao.updateMovie(movieModel.isFavourite, movieModel.id)
         }
     }

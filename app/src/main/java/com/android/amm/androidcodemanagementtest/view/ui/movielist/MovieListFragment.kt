@@ -15,12 +15,9 @@ import com.android.amm.androidcodemanagementtest.view.ui.MainActivity
 import com.google.gson.Gson
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movie_list.*
-import timber.log.Timber
 import javax.inject.Inject
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 class MovieListFragment: DaggerFragment() {
 
     @Inject

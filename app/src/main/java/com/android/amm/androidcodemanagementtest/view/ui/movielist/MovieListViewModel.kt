@@ -4,15 +4,12 @@ import androidx.lifecycle.*
 import com.android.amm.androidcodemanagementtest.data.repository.MovieRepository
 import com.android.amm.androidcodemanagementtest.models.MovieListUiState
 import com.android.amm.androidcodemanagementtest.models.MovieModel
+import com.android.amm.androidcodemanagementtest.utils.Result
 import com.android.amm.androidcodemanagementtest.utils.successOr
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.android.amm.androidcodemanagementtest.utils.Result
-import timber.log.Timber
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 class MovieListViewModel @Inject constructor(
     private val movieRepository: MovieRepository
 ): ViewModel() {
@@ -33,14 +30,14 @@ class MovieListViewModel @Inject constructor(
         getUpcomingMovies()
     }
 
-    fun getPopularMovies() {
+    private fun getPopularMovies() {
         viewModelScope.launch {
             movieRepository.getPopularMovies().collect {
-                when(it) {
+                when (it) {
                     is Result.Success<List<MovieModel>> -> {
                         it.successOr(null)?.let { response ->
-                            Timber.d("amm: response result $response")
-                            popularMovieResultMediator.value = MovieListUiState(movieList = response,
+                            popularMovieResultMediator.value = MovieListUiState(
+                                movieList = response,
                                 isMovieListEmpty = response.isEmpty()
                             )
                         }
@@ -63,14 +60,14 @@ class MovieListViewModel @Inject constructor(
 
     }
 
-    fun getUpcomingMovies() {
+    private fun getUpcomingMovies() {
         viewModelScope.launch {
             movieRepository.getUpcomingMovies().collect {
-                when(it) {
+                when (it) {
                     is Result.Success<List<MovieModel>> -> {
                         it.successOr(null)?.let { response ->
-                            Timber.d("amm: response result $response")
-                            upcomingMovieResultMediator.value = MovieListUiState(movieList = response,
+                            upcomingMovieResultMediator.value = MovieListUiState(
+                                movieList = response,
                                 isMovieListEmpty = response.isEmpty()
                             )
                         }

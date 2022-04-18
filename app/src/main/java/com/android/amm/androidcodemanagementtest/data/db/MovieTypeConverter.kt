@@ -5,9 +5,7 @@ import com.android.amm.androidcodemanagementtest.models.MovieModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 open class MovieTypeConverter {
     @TypeConverter
     fun fromString(value: String): List<MovieModel> {

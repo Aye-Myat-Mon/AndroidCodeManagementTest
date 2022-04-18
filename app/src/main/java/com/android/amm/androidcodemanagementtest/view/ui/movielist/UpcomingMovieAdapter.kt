@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.amm.androidcodemanagementtest.R
 import com.android.amm.androidcodemanagementtest.models.MovieModel
 
-/**
- * Created by ayemyatmon on 17,April,2022
- */
+
 class UpcomingMovieAdapter (private val movieList: List<MovieModel>
 ): RecyclerView.Adapter<UpcomingMovieViewHolder>() {
 
